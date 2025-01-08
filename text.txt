@@ -1,0 +1,3 @@
+<p>Call Us: &#9742;</p> <!-- ☎ -->
+<i class="fa-solid fa-blender"></i>
+<i class="fa-solid fa-mug-saucer"></i>
