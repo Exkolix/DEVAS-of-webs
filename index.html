@@ -3,63 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mantle 선물</title>
+    <title>DARiAL</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div class="navbar">
-            <button class="logo-button"><h1 class="logo">선물 MT Ecosystem</h1></button>
-            
-            <div class="search-container">
-
-                <div class="search-field">
-                    <i class="fa-solid fa-magnifying-glass" id="search-logo"></i>
-                    <input type="text" class="search-bar" placeholder="Search products...">
-                </div>
-                <button class="search-button">Search</button>
-            </div>
+            <a href="index.html">
+                <button class="logo-button"><h1 class="logo">선물 DARiAL</h1></button>
+            </a>
         </div>
+        
+        <!-- NAV Filters -->
+        <section class="nav-filters">
+            <!-- filters -->
+            <div class="filters">
+                <button class="filter-button"><i class="fa-solid fa-house"></i> Home</button>
+                <button class="filter-button"><i class="fa-solid fa-mug-saucer"></i> Appliances</button>
+                <button class="filter-button"><i class="fa-solid fa-laptop"></i> Electronics</button>
+                <button class="filter-button"><i class="fa-solid fa-shirt"></i> Fashion</button>
+                <button class="filter-button"><i class="fa-solid fa-gamepad"></i> Gaming</button>
+                <button class="filter-button"><i class="fa-solid fa-screwdriver-wrench"></i> Tools</button>
+                <button class="filter-button"><i class="fa-solid fa-leaf"></i> Support</button>
+            </div>
+            <!-- search & bag -->
+            <div class="s&b">
+                <button class="bag"><i class="fa-solid fa-bag-shopping" id="bag-icon"></i></button>
+                <button><i class="fa-solid fa-magnifying-glass" id="search-icon"></i></button>
+            </div>
+        </section>
     </header>
 
     <main>
-        <!-- Filters -->
-         <div class="filters-tab"></div>
-        <aside class="filters">
-            <h2>Filters</h2>
-            <label>
-                <input type="checkbox"><i class="fa-solid fa-house"></i> Home & Office
-            </label>
-            <label>
-                <input type="checkbox"><i class="fa-solid fa-mug-saucer"></i> Appliances
-            </label>
-            <label>
-                <input type="checkbox"><i class="fa-solid fa-laptop"></i> Electronics
-            </label>
-            <label>
-                <input type="checkbox"><i class="fa-solid fa-shirt"></i> Fashion
-            </label>
-            <label>
-                <input type="checkbox"><i class="fa-solid fa-gamepad"></i> Gaming
-            </label>
-            <label>
-                <input type="checkbox"><i class="fa-solid fa-screwdriver-wrench"></i> Tools & Gadgets
-            </label>
-            <label>
-                <input type="checkbox"><i class="fa-solid fa-leaf"></i> Nature
-            </label>
-        </aside>
-        
         <!-- Product Section -->
         <section class="products">
-
             <div class="products-board">
                 <img src="https://via.placeholder.com/600x150" alt="Featured Product">
                 <h2>Featured Product</h2>
                 <p>Special discount on this amazing product. Only $100!</p>
             </div>
-            
             <div class="product-card">
                 <img src="https://via.placeholder.com/150" alt="Product 1">
                 <h3>Product 1</h3>
