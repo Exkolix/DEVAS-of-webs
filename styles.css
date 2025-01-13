@@ -11,16 +11,18 @@ body {
 header {
     background-color: #1C1C1E;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 999; /* Make sure header stays above other elements */
 }
 
 .navbar {
     display: flex;
     justify-content: space-between; /* Space between logo and top links */
     align-items: center; /* Center items vertically */
-    padding: 10px 20px;
-    height: 15px;
+    padding: 10px 20px; /* Increased padding */
+    height: 15px; /* Adjusted height to fit the content */
     border-bottom: 1px solid #000000;
 }
+
 /* Top Links */
 .top-links {
     display: flex;
@@ -60,19 +62,38 @@ header {
 
 /* Navigation Filters */
 .nav-filters {
+    position: relative;           /* Initially relative */
+    top: 0;
+    left: 0;
+    width: 100%;                  /* Full-width navbar */
+    z-index: 1000;                /* Ensure it's above other elements */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 50px;
-    background-color: #000000;
-    border-bottom: 1px solid #1C1C1E;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    backdrop-filter: blur(10px);  /* Optional blur effect */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Optional border */
+    transition: all 0.3s ease;    /* Smooth transition for all changes */
+}
+/* This class will be added when user scrolls */
+.nav-filters.sticky {
+    position: fixed;            /* Fixed position when scrolled */
+    top: 0;
+    left: 0;
+    transform: translateY(0);   /* Ease-in effect */
+    background-color: rgba(0, 0, 0, 0.9); /* Solid but semi-transparent background */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    padding: 15px 20px; /* Increased padding when fixed */
 }
 
+/* Filter, Search, and Bag buttons */
 .filter-button, .search, .bag {
     color: #E5E5E5;
     border: none;
     background: none;
     padding: 5px;
+    padding-left: 20px;
     cursor: pointer;
     font-size: 1rem;
     transition: color 0.3s;
@@ -87,12 +108,12 @@ header {
     position: relative;
     width: 100%;
     height: auto;
-    overflow: hidden;
 }
 
 .hero-image {
     width: 100%;
-    height: 600px;
+    height: auto;
+    overflow: hidden;
     display: block;
 }
 
