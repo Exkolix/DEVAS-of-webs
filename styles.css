@@ -5,6 +5,7 @@ body {
     font-family: Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
+    box-sizing: border-box; /* Ensure padding and margin are correctly handled */
 }
 
 /* Navbar */
@@ -21,6 +22,9 @@ header {
     padding: 10px 20px; /* Increased padding */
     height: 15px; /* Adjusted height to fit the content */
     border-bottom: 1px solid #000000;
+    position: relative;  /* Initially relative */
+    top: 0;
+    width: 100%;
 }
 
 /* Top Links */
@@ -62,11 +66,6 @@ header {
 
 /* Navigation Filters */
 .nav-filters {
-    position: relative;           /* Initially relative */
-    top: 0;
-    left: 0;
-    width: 100%;                  /* Full-width navbar */
-    z-index: 1000;                /* Ensure it's above other elements */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -76,15 +75,17 @@ header {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Optional border */
     transition: all 0.3s ease;    /* Smooth transition for all changes */
 }
-/* This class will be added when user scrolls */
+
+/* Sticky Navbar Styles */
 .nav-filters.sticky {
-    position: fixed;            /* Fixed position when scrolled */
+    position: fixed;             /* Fixed position when scrolled */
     top: 0;
     left: 0;
-    transform: translateY(0);   /* Ease-in effect */
+    width: 100%; /* Ensure it takes full width */
     background-color: rgba(0, 0, 0, 0.9); /* Solid but semi-transparent background */
+    padding: 15px 20px; /* Slightly larger padding when sticky */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
-    padding: 15px 20px; /* Increased padding when fixed */
+    z-index: 1000; /* Ensure navbar stays on top */
 }
 
 /* Filter, Search, and Bag buttons */
@@ -108,6 +109,7 @@ header {
     position: relative;
     width: 100%;
     height: auto;
+    margin-top: 0; /* Remove unnecessary margin-top */
 }
 
 .hero-image {

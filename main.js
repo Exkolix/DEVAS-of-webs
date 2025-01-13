@@ -1,12 +1,14 @@
-window.onscroll = function() { stickyNavbar() };
+// Get the navbar element
+const navFilters = document.querySelector('.nav-filters');
 
-var navbar = document.querySelector(".nav-filters");
-var sticky = navbar.offsetTop;
-
-function stickyNavbar() {
-  if (window.pageYOffset > sticky) {
-    navbar.classList.add("sticky");  // Add sticky class when scrolling down
-  } else {
-    navbar.classList.remove("sticky");  // Remove sticky class when at the top
-  }
-}
+// Listen for scroll events
+window.addEventListener('scroll', () => {
+    // Check if the page has scrolled past a certain point (e.g., 100px)
+    if (window.scrollY > 86) {
+        // Add the 'sticky' class to make the navbar fixed
+        navFilters.classList.add('sticky');
+    } else {
+        // Remove the 'sticky' class when scroll is above 100px
+        navFilters.classList.remove('sticky');
+    }
+});
