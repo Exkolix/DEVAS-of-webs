@@ -78,11 +78,11 @@ header {
 
 /* Sticky Navbar Styles */
 .nav-filters.sticky {
-    position: fixed;                        /* Fixed position when scrolled */
-    top: 0;
+    position: fixed;                        
+    top: 0; 
     left: 0;
     width: 100%; 
-    background-color: rgba(0, 0, 0, 0.9); /* Solid but semi-transparent background */
+    background-color: rgba(0, 0, 0, 0.9);
     padding: 15px 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000; 
