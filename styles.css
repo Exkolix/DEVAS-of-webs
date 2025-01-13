@@ -24,7 +24,7 @@ header {
     border-bottom: 1px solid #000000;
     position: relative;  /* Initially relative */
     top: 0;
-    width: 100%;
+    width: auto;
 }
 
 /* Top Links */
@@ -78,14 +78,15 @@ header {
 
 /* Sticky Navbar Styles */
 .nav-filters.sticky {
-    position: fixed;             /* Fixed position when scrolled */
+    position: fixed;                        /* Fixed position when scrolled */
     top: 0;
     left: 0;
-    width: 100%; /* Ensure it takes full width */
+    width: 100%; 
     background-color: rgba(0, 0, 0, 0.9); /* Solid but semi-transparent background */
-    padding: 15px 20px; /* Slightly larger padding when sticky */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
-    z-index: 1000; /* Ensure navbar stays on top */
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000; 
+    transition: all 0.5s ease;
 }
 
 /* Filter, Search, and Bag buttons */
