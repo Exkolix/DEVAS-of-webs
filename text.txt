@@ -1,3 +1,10 @@
 <p>Call Us: &#9742;</p> <!-- ☎ -->
 <i class="fa-solid fa-blender"></i>
 <i class="fa-solid fa-mug-saucer"></i>
+<i class="fa-solid fa-house"></i>
+<i class="fa-solid fa-mug-saucer"></i>
+<i class="fa-solid fa-laptop"></i>
+<i class="fa-solid fa-shirt"></i>
+<i class="fa-solid fa-gamepad"></i>
+<i class="fa-solid fa-screwdriver-wrench"></i>
+<i class="fa-solid fa-leaf"></i>
