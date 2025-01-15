@@ -25,39 +25,76 @@
                 <a href="about_us.html">About us</a>
             </div>
         </div>
-
+    
         <!-- NAV Filters -->
         <section class="nav-filters">
-            <!-- filters -->
             <div class="filters">
-                <button class="filter-button">Collections</button>
-                <button class="filter-button">Explore</button>
-                <button class="filter-button">Shop</button>
+                
+                <div class="dropdown">
+                    <button class="filter-button">Collections</button>
+                    <!-- Drop -->
+                    <div class="dropdown-menu full-width">
+                        <a href="#">New Arrivals</a>
+                        <a href="#">Trending</a>
+                        <a href="#">Best Sellers</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="filter-button">Explore</button>
+                    <!-- Drop -->
+                    <div class="dropdown-menu full-width">
+                        <a href="#">Lookbook</a>
+                        <a href="#">Our Story</a>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="filter-button">Shop</button>
+                    <!-- Drop -->
+                    <div class="dropdown-menu full-width">
+                        <a href="#">Men</a>
+                        <a href="#">Women</a>
+                        <a href="#">Accessories</a>
+                    </div>
+                </div>
+
                 <button class="filter-button">Support</button>
             </div>
-
-            <!-- search & bag -->
-            <div class="s&b">
-                <button class="search"><i class="fa fa-search" id="search-icon"></i></button>
-                <button class="bag"><i class="fa fa-shopping-bag" id="bag-icon"></i></button>
+        
+            <div class="searchAndBag">
+                <div class="dropdown-container">
+                    <button class="search"><i class="fa fa-search" id="search-icon"></i></button>
+                    <div class="dropdown-content" id="search-dropdown">
+                        <input type="text" placeholder="Search...">
+                    </div>
+                </div>
+                <div class="dropdown-container">
+                    <button class="bag"><i class="fa fa-shopping-bag" id="bag-icon"></i></button>
+                    <div class="dropdown-content" id="bag-dropdown">
+                        <p>Your bag is empty.</p>
+                    </div>
+                </div>
             </div>
-        </section>
+        </section>        
     </header>
+    
 
     <section class="hero">
-        <img src="Asset\images\yoal-desurmont-qPzrwKHwp0A-unsplash.jpg" alt="Hero Image" class="hero-image">
+        <img src="Asset/images/yoal-desurmont-qPzrwKHwp0A-unsplash.jpg" alt="Hero Image" class="hero-image">
         <div class="hero-msg">
-            <h1>DARiAL</h1>
-            <p>Get Your work flow built arround you</p>
+            <h1 class="hero-title">
+                <span class="hero-part" id="dar">DAR</span>
+                <span class="hero-part" id="ial">iAL</span>
+            </h1>
+            <p>Get Your work flow built around you</p>
+            <p class="reveal-text">Empowering your creativity and productivity with seamless solutions.</p>
         </div>
     </section>
     
     <main>
-        
+        <!-- Add main content here -->
     </main>
-
-
-
 
     <script src="main.js"></script>
 </body>

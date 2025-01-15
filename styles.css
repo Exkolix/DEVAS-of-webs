@@ -1,3 +1,4 @@
+
 /* General Styling */
 body {
     background-color: #000000;
@@ -65,6 +66,9 @@ header {
 }
 
 /* Navigation Filters */
+.filters{
+    display: flex;
+}
 .nav-filters {
     display: flex;
     justify-content: space-between;
@@ -74,6 +78,9 @@ header {
     backdrop-filter: blur(10px);  /* Optional blur effect */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Optional border */
     transition: all 0.3s ease;    /* Smooth transition for all changes */
+}
+.searchAndBag{
+    display: flex;
 }
 
 /* Sticky Navbar Styles */
@@ -107,24 +114,142 @@ header {
 
 /* Hero Section */
 .hero {
-    position: relative;
+    position: relative; /* Make this a positioning context for child elements */
     width: 100%;
-    height: auto;
-    margin-top: 0; /* Remove unnecessary margin-top */
+    height: 600px; /* Adjust height to match your hero image */
+    margin-top: 0;
+    overflow: hidden; /* Prevent overflow of child elements */
 }
 
 .hero-image {
     width: 100%;
-    height: 600px;
-    overflow: hidden;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire hero section */
     display: block;
 }
 
-/* Utility Classes */
-.navbar + .hero {
-    margin-top: 0;
-    padding-top: 0;
+/* Hero Message */
+.hero-msg {
+    position: absolute;
+    top: 50%; /* Vertically center */
+    left: 50%; /* Horizontally center */
+    transform: translate(-50%, -50%); /* Center the text perfectly */
+    text-align: center;
+    z-index: 2; /* Ensure it appears above the image */
 }
-.hero-msg{
-    background-color: #FFFFFF;
+
+/* Hero Title */
+.hero-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 4rem; /* Adjust font size */
+    font-weight: bold;
+    color: #FFFFFF;
+    opacity: 0; /* Hidden by default */
+    transform: translateY(50px); /* Slide up animation */
+    transition: opacity 1s ease, transform 1s ease;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Add shadow for better readability */
+}
+
+/* Individual Parts */
+.hero-part {
+    display: inline-block;
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.hero-part#dar {
+    transform: translateX(-50px); /* Move left initially */
+    opacity: 0;
+}
+
+.hero-part#ial {
+    transform: translateX(50px); /* Move right initially */
+    opacity: 0;
+}
+
+/* When Active */
+.hero-title.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-part.active#dar {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.hero-part.active#ial {
+    transform: translateX(0);
+    opacity: 1;
+}
+/* Dropdown Styling */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(28, 28, 30, 0.95); /* Matches navbar style */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 10px 0;
+    z-index: 100;
+}
+
+.dropdown-menu a {
+    color: #E5E5E5;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Search and Bag Dropdown Styling */
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(28, 28, 30, 0.95);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 100;
+    width: 200px;
+}
+
+.dropdown-content input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    background: none;
+    color: #E5E5E5;
+}
+
+.dropdown-content p {
+    color: #E5E5E5;
+    margin: 0;
+    text-align: center;
+}
+
+.dropdown-container.active .dropdown-content {
+    display: block;
 }
