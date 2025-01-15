@@ -36,11 +36,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const heroTitle = document.querySelector(".hero-title");
     const darPart = document.getElementById("dar");
     const ialPart = document.getElementById("ial");
+    const revealText = document.querySelector(".reveal-text");
+    const heroSubtext = document.querySelector(".hero-subtext");
 
+    // Trigger the title animation after 0.5s
     setTimeout(() => {
         heroTitle.classList.add("active");
         darPart.classList.add("active");
         ialPart.classList.add("active");
-    }, 500); // Adjust delay for when the animation starts
+
+        // Trigger the subtext fade-in after the title animation completes (1s delay)
+        setTimeout(() => {
+            heroSubtext.classList.add("active");
+        }, 1000); // Adjust delay to sync with title animation
+
+        // Trigger the reveal text animation after 1.5s delay
+        setTimeout(() => {
+            revealText.classList.add("active");
+        }, 1500); // Adjust delay to allow title to fully animate
+    }, 500); // Start the "DARiAL" animation after 0.5s
 });
 
