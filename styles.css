@@ -1,6 +1,6 @@
-
 /* General Styling */
 body {
+    font-family: 'Open Sans', sans-serif;
     background-color: #000000;
     color: #E5E5E5;
     font-family: Helvetica, Arial, sans-serif;
@@ -74,10 +74,12 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
-    backdrop-filter: blur(10px);  /* Optional blur effect */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Optional border */
-    transition: all 0.3s ease;    /* Smooth transition for all changes */
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    transition: all 0.3s ease; 
+    position: relative; /* Creates a stacking context for child elements */
+    z-index: 10; 
 }
 .searchAndBag{
     display: flex;
@@ -119,6 +121,7 @@ header {
     height: 600px;
     margin-top: 0;
     overflow: hidden;
+    z-index: 1;
 }
 
 .hero-image {
@@ -133,6 +136,7 @@ header {
     position: absolute;
     top: 50%;
     left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 2;
@@ -140,19 +144,14 @@ header {
 
 /* Hero Title */
 .hero-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    font-family: 'Roboto', sans-serif;
     font-size: 4rem;
-    font-weight: bold;
     color: #FFFFFF;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease, transform 1s ease;
+    text-align: center;
+    letter-spacing: 2px;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: relative; /* Position the text relative to the image */
 }
-
 /* Individual Parts */
 .hero-part {
     display: inline-block;
@@ -186,14 +185,15 @@ header {
 }
 /* Hero Subtext */
 .hero-subtext {
-    opacity: 0; /* Initially hidden */
+    font-family: 'Roboto', sans-serif;
+    opacity: 0;
     transform: translateY(20px); /* Slide-up effect */
     transition: opacity 1s ease, transform 1s ease;
     font-size: 1.5rem;
     color: #E5E5E5;
     text-align: center;
-    margin-top: 15px;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Subtle text shadow for readability */
+    margin-top: 30px;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* When Subtext is Revealed (Triggered via JS) */
@@ -203,13 +203,14 @@ header {
 }
 /* Reveal Text Underneath */
 .reveal-text {
+    font-family: 'Lato', sans-serif;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 1s ease, transform 1s ease;
     font-size: 1.2rem;
     color: #E5E5E5;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 35px;
 }
 
 /* When Revealed (Triggered after main animation) */
@@ -233,6 +234,7 @@ header {
 /* Dropdown Styling */
 .dropdown {
     position: relative;
+    z-index: 20;
 }
 
 .dropdown-menu {
@@ -240,9 +242,10 @@ header {
     position: absolute;
     top: 100%;
     left: 0;
+    width: 100vw; /* Full width of the viewport */
     background-color: rgba(28, 28, 30, 0.95); /* Matches navbar style */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 8px;
+    border-radius: 0; /* Remove rounded corners */
     padding: 10px 0;
     z-index: 100;
 }
@@ -253,6 +256,7 @@ header {
     text-decoration: none;
     display: block;
     transition: background-color 0.3s ease;
+    text-align: left;
 }
 
 .dropdown-menu a:hover {
