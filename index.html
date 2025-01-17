@@ -84,7 +84,7 @@
     
 
     <section class="hero">
-        <img src="Asset/images/yoal-desurmont-qPzrwKHwp0A-unsplash.jpg" alt="Hero Image" class="hero-image" loading="lazy">
+        <img src="Asset/images/yoal-desurmont-qPzrwKHwp0A-unsplash.jpg" alt="Hero Image" class="hero-image" >
         <div class="hero-msg">
             <h1 class="hero-title">
                 <span class="hero-part" id="dar">DAR</span>
@@ -96,11 +96,35 @@
     </section>
     
     <main>
-        <section class="shopSec" id="shop">
-            <div class="shop1"></div>
-            <div class="shop2"></div>
-            <div class="shop3"></div>
-            <div class="shop4"></div>
+        <section class="shopping-section" id="shopping">
+            <div class="tabs">
+                <!-- Top Tabs -->
+                <button class="tab active" data-tab="tab1">Men</button>
+                <button class="tab" data-tab="tab2">Women</button>
+            </div>
+            <div class="tabs">
+                <!-- Bottom Tabs -->
+                <button class="tab" data-tab="tab3">Accessories</button>
+                <button class="tab" data-tab="tab4">Sale</button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                    <img src="Asset/images/men-shop.jpg" alt="Men's Collection">
+                    <p>Explore the latest in men's fashion.</p>
+                </div>
+                <div class="tab-pane" id="tab2">
+                    <img src="Asset/images/women-shop.jpg" alt="Women's Collection">
+                    <p>Discover stylish outfits for women.</p>
+                </div>
+                <div class="tab-pane" id="tab3">
+                    <img src="Asset/images/accessories-shop.jpg" alt="Accessories">
+                    <p>Find the perfect accessories for any occasion.</p>
+                </div>
+                <div class="tab-pane" id="tab4">
+                    <img src="Asset/images/sale-shop.jpg" alt="Sale">
+                    <p>Don't miss out on amazing deals.</p>
+                </div>
+            </div>
         </section>
     </main>
 
