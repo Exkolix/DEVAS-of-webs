@@ -8,3 +8,98 @@
 <i class="fa-solid fa-gamepad"></i>
 <i class="fa-solid fa-screwdriver-wrench"></i>
 <i class="fa-solid fa-leaf"></i>
+
+    <main>
+        <section class="shopping-section" id="shopping">
+            <div class="tabs">
+                <!-- Top Tabs -->
+                <button class="tab active" data-tab="tab1">Men</button>
+                <button class="tab" data-tab="tab2">Women</button>
+            </div>
+            <div class="tabs">
+                <!-- Bottom Tabs -->
+                <button class="tab" data-tab="tab3">Accessories</button>
+                <button class="tab" data-tab="tab4">Sale</button>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                    <img src="pexels-alexandr-borecky-128389-393047.jpg" alt="Men's Collection">
+                    <p>Explore the latest in men's fashion.</p>
+                </div>
+                <div class="tab-pane" id="tab2">
+                    <img src="pexels-carlos-montelara-3450804-6032598.jpg" alt="Women's Collection">
+                    <p>Discover stylish outfits for women.</p>
+                </div>
+                <div class="tab-pane" id="tab3">
+                    <img src="Asset/images/accessories-shop.jpg" alt="Accessories">
+                    <p>Find the perfect accessories for any occasion.</p>
+                </div>
+                <div class="tab-pane" id="tab4">
+                    <img src="Asset/images/sale-shop.jpg" alt="Sale">
+                    <p>Don't miss out on amazing deals.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    /* Shopping Section Styling */
+.shopping-section {
+    padding: 40px 20px;
+    background-color: #1C1C1E;
+    color: #E5E5E5;
+    text-align: center;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #E5E5E5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.tab:hover,
+.tab.active {
+    background-color: #FFFFFF;
+    color: #000;
+}
+
+.tab-content {
+    position: relative;
+    margin-top: 20px;
+}
+
+.tab-pane {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.tab-pane img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

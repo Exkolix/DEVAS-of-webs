@@ -8,6 +8,7 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Dropdown on click
 document.addEventListener("DOMContentLoaded", () => {
     const searchBtn = document.querySelector(".search");
     const bagBtn = document.querySelector(".bag");
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         bagDropdown.classList.remove("active");
     });
 });
+
 // LOGO loading section
 document.addEventListener("DOMContentLoaded", () => {
     const heroTitle = document.querySelector(".hero-title");
@@ -53,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Trigger the reveal text animation after 1.5s delay
         setTimeout(() => {
             revealText.classList.add("active");
-        }, 1500); // Adjust delay to allow title to fully animate
+        }, 1500);
     }, 500); // Start the "DARiAL" animation after 0.5s
 });
 
