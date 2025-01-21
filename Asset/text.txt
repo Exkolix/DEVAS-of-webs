@@ -103,3 +103,6 @@
         transform: scale(1);
     }
 }
+.shop-category.half-width {
+    width: calc(50% - 10px);
+}
