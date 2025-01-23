@@ -1,0 +1,286 @@
+/* General Styling */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #000000;
+    color: #E5E5E5;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensure padding and margin are correctly handled */
+}
+
+/* Navbar */
+header {
+    height: 86px;
+    background-color: #1C1C1E;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 999; /* Make sure header stays above other elements */
+}
+
+/* Navigation Filters */
+.filters{
+    display: flex;
+}
+.nav-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    transition: all 0.3s ease; 
+    position: relative; /* Creates a stacking context for child elements */
+    z-index: 10; 
+}
+.searchAndBag{
+    display: flex;
+}
+/* Navigation Filters */
+.filters{
+    display: flex;
+}
+.nav-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+    transition: all 0.3s ease; 
+    position: relative; /* Creates a stacking context for child elements */
+    z-index: 10; 
+}
+.searchAndBag{
+    display: flex;
+}
+/* Dropdown Styling */
+.dropdown {
+    position: relative;
+    z-index: 20;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw; /* Full width of the viewport */
+    background-color: rgba(28, 28, 30, 0.95); /* Matches navbar style */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 0; /* Remove rounded corners */
+    padding: 10px 0;
+    z-index: 100;
+}
+
+.dropdown-menu a {
+    color: #E5E5E5;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+    text-align: left;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Search and Bag Dropdown Styling */
+.dropdown-container {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(28, 28, 30, 0.95);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 100;
+    width: 200px;
+}
+
+.dropdown-content input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    background: none;
+    color: #E5E5E5;
+}
+
+.dropdown-content p {
+    color: #E5E5E5;
+    margin: 0;
+    text-align: center;
+}
+
+.dropdown-container.active .dropdown-content {
+    display: block;
+}
+/* Sticky Navbar Styles */
+.nav-filters.sticky {
+    position: fixed;                        
+    top: 0; 
+    left: 0;
+    width: 97%; 
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 15px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000; 
+    transition: all 0.5s ease;
+}
+
+/* Filter, Search, and Bag buttons */
+.filter-button, .search, .bag {
+    color: #E5E5E5;
+    border: none;
+    background: none;
+    padding: 5px;
+    padding-left: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.filter-button:hover, .search:hover, .bag:hover {
+    color: #FFFFFF;
+}
+
+.logoImg{
+    height: 15px;
+    width: auto;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Space between logo and top links */
+    align-items: center; /* Center items vertically */
+    padding: 10px 20px; /* Increased padding */
+    height: 15px; /* Adjusted height to fit the content */
+    border-bottom: 1px solid #000000;
+    position: relative;  /* Initially relative */
+    top: 0;
+    width: auto;
+}
+
+/* Top Links */
+.top-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    font-size: 0.9rem;
+}
+
+.top-links a {
+    text-decoration: none;
+    color: #E5E5E5;
+    transition: color 0.3s;
+}
+
+.top-links a:hover {
+    color: #FFFFFF;
+}
+
+.top-links span {
+    color: #888888;
+}
+
+/* Logo */
+.logo {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #E5E5E5;
+    text-align: center;
+}
+
+.logo-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+
+
+/* Footer Styling */
+footer {
+    background-color: #1C1C1E;
+    color: #E5E5E5;
+    padding: 40px 20px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-column h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #FFFFFF;
+}
+
+.footer-column p, .footer-column ul {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #E5E5E5;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    text-decoration: none;
+    color: #E5E5E5;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #FFFFFF;
+}
+
+.social-icons a {
+    color: #E5E5E5;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #FFFFFF;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+    color: #888888;
+}
