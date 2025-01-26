@@ -106,3 +106,8 @@
 .shop-category.half-width {
     width: calc(50% - 10px);
 }
+
+
+
+//////////////////////////////////
+grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

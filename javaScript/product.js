@@ -22,7 +22,7 @@ function renderProducts(filteredProducts) {
         productElement.innerHTML = `
             <img src="https://via.placeholder.com/200" alt="Product Image">
             <h4>${product.name}</h4>
-            <p>$${product.price}</p>
+            <p>$${product.price}</p>w
         `;
         productContainer.appendChild(productElement);
     });

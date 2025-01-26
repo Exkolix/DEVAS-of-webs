@@ -1,12 +1,3 @@
-const navFilters = document.querySelector('.nav-filters');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 86) {
-        navFilters.classList.add('sticky');
-    } else {
-        navFilters.classList.remove('sticky');
-    }
-});
 
 // Dropdown on click
 document.addEventListener("DOMContentLoaded", () => {

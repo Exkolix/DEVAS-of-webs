@@ -6,21 +6,28 @@ body {
     font-family: Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Ensure padding and margin are correctly handled */
+    box-sizing: border-box;
 }
 
 /* Navbar */
 header {
-    height: 86px;
     background-color: #1C1C1E;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    z-index: 999; /* Make sure header stays above other elements */
+    z-index: 999; 
+    position: static;
+    overflow: visible;
 }
 
-/* Navigation Filters */
-.filters{
+.navbar {
     display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 20px;
+    height: 15px;
+    border-bottom: 1px solid #000000;
+    top: 0;
+    width: auto;
 }
 .nav-filters {
     display: flex;
@@ -29,10 +36,15 @@ header {
     padding: 10px 20px;
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-    transition: all 0.3s ease; 
-    position: relative; /* Creates a stacking context for child elements */
-    z-index: 10; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky; 
+    top: 0;
+    z-index: 10;  
+    transition: all 0.3s ease;
+}
+/* Navigation Filters */
+.filters{
+    display: flex;
 }
 .searchAndBag{
     display: flex;
@@ -40,18 +52,6 @@ header {
 /* Navigation Filters */
 .filters{
     display: flex;
-}
-.nav-filters {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
-    transition: all 0.3s ease; 
-    position: relative; /* Creates a stacking context for child elements */
-    z-index: 10; 
 }
 .searchAndBag{
     display: flex;
@@ -67,10 +67,9 @@ header {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100vw; /* Full width of the viewport */
-    background-color: rgba(28, 28, 30, 0.95); /* Matches navbar style */
+    width: 100vw; 
+    background-color: rgba(28, 28, 30, 0.95); 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 0; /* Remove rounded corners */
     padding: 10px 0;
     z-index: 100;
 }
@@ -129,8 +128,9 @@ header {
     display: block;
 }
 /* Sticky Navbar Styles */
-.nav-filters.sticky {
-    position: fixed;                        
+/* .nav-filters.sticky {
+    position: sticky;                    
+    align-self: flex-start;    
     top: 0; 
     left: 0;
     width: 97%; 
@@ -139,7 +139,7 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000; 
     transition: all 0.5s ease;
-}
+} */
 
 /* Filter, Search, and Bag buttons */
 .filter-button, .search, .bag {
@@ -159,17 +159,6 @@ header {
 
 .logoImg{
     height: 15px;
-    width: auto;
-}
-.navbar {
-    display: flex;
-    justify-content: space-between; /* Space between logo and top links */
-    align-items: center; /* Center items vertically */
-    padding: 10px 20px; /* Increased padding */
-    height: 15px; /* Adjusted height to fit the content */
-    border-bottom: 1px solid #000000;
-    position: relative;  /* Initially relative */
-    top: 0;
     width: auto;
 }
 
