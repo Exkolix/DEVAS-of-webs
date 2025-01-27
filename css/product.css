@@ -64,11 +64,12 @@ body {
 .filter-sidebar {
     background-color: #000;
     padding: 10px;
-    width: 300px;
+    width: 370px;
     height: 100%;
     position: sticky;
     top: 0;
     align-self: flex-start;
+    z-index: 1;
 }
 .filter-section label {
     display: block;
@@ -111,8 +112,8 @@ body {
 }
 
 .product-card {
-    background: #fff;
-    height: calc(100vh - 120px);
+    background: #ffffff;
+    height: calc(100vh - 150px);
     padding: 10px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -133,5 +134,5 @@ body {
 
 .product-card p {
     font-size: 0.9rem;
-    color: #555;
+    color: #ffffff;
 }
