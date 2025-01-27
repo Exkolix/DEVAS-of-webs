@@ -1,3 +1,27 @@
+let lastScrollPosition = 0; // Track the last known scroll position
+const navbar = document.querySelector('.nav-filters');
+const navlink = document.querySelector('.navlink'); // Get the navlink element
+
+// Calculate the combined height of navbar and navlink
+const combinedHeight = navbar.offsetHeight + (navlink?.offsetHeight || 0);
+
+window.addEventListener('scroll', () => {
+  const currentScrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+  // Only apply the effect when the scroll position is past the combined height
+  if (currentScrollPosition > combinedHeight) {
+    if (currentScrollPosition > lastScrollPosition) {
+      // Scrolling down: Hide the navbar
+      navbar.classList.add('hidden');
+    } else {
+      // Scrolling up: Show the navbar
+      navbar.classList.remove('hidden');
+    }
+  }
+
+  // Update the last scroll position
+  lastScrollPosition = currentScrollPosition;
+});
 // Sample products for demonstration
 const products = [
     { id: 1, name: "Air Max Sneakers", price: 120 },
