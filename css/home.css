@@ -1,3 +1,14 @@
+body {
+    background-image: url("../Asset/images/yoal-desurmont-qPzrwKHwp0A-unsplash.jpg"); /* Ensure correct relative path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 /* Filter, Search, and Bag buttons */
 .filter-button, .search, .bag {
     color: #E5E5E5;
@@ -19,16 +30,18 @@
     position: relative;
     width: 100%;
     height: 90vh;
-    margin-top: 0;
-    overflow: hidden;
-    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1); /* Slight overlay to improve readability */
 }
-
 .hero-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    display: none;
 }
 
 /* Hero Message */

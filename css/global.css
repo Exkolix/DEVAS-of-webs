@@ -1,9 +1,8 @@
 /* General Styling */
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     background-color: #000000;
     color: #E5E5E5;
-    font-family: Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,21 +13,20 @@ header {
     background-color: #1C1C1E;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    z-index: 999; 
     position: static;
     overflow: visible;
+    z-index: 999;
 }
 
 .navbar {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
     padding: 10px 20px;
     height: 15px;
     border-bottom: 1px solid #000000;
-    top: 0;
-    width: auto;
 }
+
 .nav-filters {
     display: flex;
     justify-content: space-between;
@@ -37,27 +35,12 @@ header {
     background-color: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: sticky; 
+    position: sticky;
     top: 0;
-    z-index: 1000;  
+    z-index: 1000;
     transition: all 0.3s ease;
 }
-.hidden {
-    transform: translateY(-100%);
-    transition: transform 0.5s ease;
-}
-/* Navigation Filters */
-.filters{
-    display: flex;
-}
-.searchAndBag{
-    display: flex;
-}
-/* Navigation Filters */
-.filters{
-    display: flex;
-}
-.searchAndBag{
+.filters {
     display: flex;
 }
 /* Dropdown Styling */
@@ -67,15 +50,20 @@ header {
 }
 
 .dropdown-menu {
-    display: none;
+    display: block;
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100vw; 
-    background-color: rgba(28, 28, 30, 0.95); 
+    width: 100vw;
+    background-color: rgba(28, 28, 30, 0.95);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     padding: 10px 0;
     z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
 }
 
 .dropdown-menu a {
@@ -92,16 +80,19 @@ header {
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
-/* Search and Bag Dropdown Styling */
+/* Search/Bag Dropdowns */
 .dropdown-container {
     position: relative;
 }
 
 .dropdown-content {
-    display: none;
+    display: block;
     position: absolute;
     top: 100%;
     right: 0;
@@ -109,8 +100,20 @@ header {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     padding: 10px;
-    z-index: 100;
     width: 200px;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.dropdown-container.active .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .dropdown-content input {
@@ -127,24 +130,9 @@ header {
     margin: 0;
     text-align: center;
 }
-
-.dropdown-container.active .dropdown-content {
-    display: block;
+.searchAndBag {
+    display: flex;
 }
-/* Sticky Navbar Styles */
-/* .nav-filters.sticky {
-    position: sticky;                    
-    align-self: flex-start;    
-    top: 0; 
-    left: 0;
-    width: 97%; 
-    background-color: rgba(0, 0, 0, 0.9);
-    padding: 15px 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000; 
-    transition: all 0.5s ease;
-} */
-
 /* Filter, Search, and Bag buttons */
 .filter-button, .search, .bag {
     color: #E5E5E5;
@@ -159,11 +147,6 @@ header {
 
 .filter-button:hover, .search:hover, .bag:hover {
     color: #FFFFFF;
-}
-
-.logoImg{
-    height: 15px;
-    width: auto;
 }
 
 /* Top Links */
@@ -203,7 +186,10 @@ header {
     margin: 0 auto;
 }
 
-
+.logoImg {
+    height: 15px;
+    width: auto;
+}
 
 /* Footer Styling */
 footer {
@@ -276,4 +262,10 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 15px;
     color: #888888;
+}
+
+/* Hidden utility class */
+.hidden {
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
 }

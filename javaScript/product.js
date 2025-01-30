@@ -1,71 +1,66 @@
-let lastScrollPosition = 0; // Track the last known scroll position
 const navbar = document.querySelector('.nav-filters');
-const navlink = document.querySelector('.navlink'); // Get the navlink element
+const sidebar = document.querySelector('.filter-sidebar');
 
-// Calculate the combined height of navbar and navlink
-const combinedHeight = navbar.offsetHeight + (navlink?.offsetHeight || 0);
-
-window.addEventListener('scroll', () => {
-  const currentScrollPosition = window.scrollY || document.documentElement.scrollTop;
-
-  // Only apply the effect when the scroll position is past the combined height
-  if (currentScrollPosition > combinedHeight) {
-    if (currentScrollPosition > lastScrollPosition) {
-      // Scrolling down: Hide the navbar
-      navbar.classList.add('hidden');
-    } else {
-      // Scrolling up: Show the navbar
-      navbar.classList.remove('hidden');
-    }
-  }
-
-  // Update the last scroll position
-  lastScrollPosition = currentScrollPosition;
-});
-// Sample products for demonstration
+// Sample product array (add this to product.js)
 const products = [
-    { id: 1, name: "Air Max Sneakers", price: 120 },
-    { id: 2, name: "Zoom Fly Shoes", price: 150 },
-    { id: 3, name: "Sport T-Shirt", price: 60 },
-    { id: 4, name: "Travel Backpack", price: 80 },
+    {
+        id: 1,
+        name: "Wireless Headphones",
+        price: 199.99,
+        image: "https://picsum.photos/300/300?random=1",
+        description: "Premium noise-canceling wireless headphones with 30-hour battery life"
+    },
+    {
+        id: 2,
+        name: "Smart Fitness Watch",
+        price: 149.99,
+        image: "https://picsum.photos/300/300?random=2",
+        description: "Heart rate monitor, GPS tracking, and water-resistant design"
+    },
+    {
+        id: 3,
+        name: "Compact Blender",
+        price: 89.99,
+        image: "https://picsum.photos/300/300?random=3",
+        description: "Portable high-speed blender for smoothies and shakes"
+    },
+    // Add more products as needed
 ];
 
-// Function to render products
-function renderProducts(filteredProducts) {
-    const productContainer = document.querySelector('.product-grid');
-    productContainer.innerHTML = '';
+// Render function (add this to product.js)
+function renderProducts(productsArray) {
+    const productGrid = document.querySelector('.product-grid');
+    
+    // Clear existing products
+    productGrid.innerHTML = '';
 
-    if (filteredProducts.length === 0) {
-        productContainer.innerHTML = '<p>No products match the selected filters.</p>';
-        return;
-    }
-
-    filteredProducts.forEach(product => {
-        const productElement = document.createElement('div');
-        productElement.classList.add('product-card');
-        productElement.innerHTML = `
-            <img src="https://via.placeholder.com/200" alt="Product Image">
-            <h4>${product.name}</h4>
-            <p>$${product.price}</p>w
+    // Create product cards
+    productsArray.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <div class="product-info">
+                <h4>${product.name}</h4>
+                <p class="price">$${product.price.toFixed(2)}</p>
+                <p class="description">${product.description}</p>
+                <button onclick="addToCart(${product.id})">Add to Cart</button>
+            </div>
         `;
-        productContainer.appendChild(productElement);
+        productGrid.appendChild(productCard);
     });
 }
 
-// Function to filter products based on price
-function filterProducts() {
-    const selectedPriceRanges = Array.from(document.querySelectorAll('.price-filter:checked')).map(checkbox => checkbox.value);
+// Initial render when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    renderProducts(products);
+});
 
-    const filteredProducts = products.filter(product => {
-        return selectedPriceRanges.some(range => {
-            const [min, max] = range.split('-').map(Number);
-            return product.price >= min && product.price <= max;
-        });
-    });
-
-    renderProducts(filteredProducts);
+// Add this placeholder function for the Add to Cart button (add to main.js)
+function addToCart(productId) {
+    // Your cart logic will go here
+    console.log(`Added product ${productId} to cart`);
 }
-
 // Add event listeners to checkboxes for real-time filtering
 document.querySelectorAll('.price-filter').forEach(checkbox => {
     checkbox.addEventListener('change', filterProducts);
