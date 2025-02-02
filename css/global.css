@@ -1,3 +1,11 @@
+/* Add this at the top of your CSS */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
 /* General Styling */
 body {
     font-family: Helvetica, Arial, sans-serif;
@@ -132,6 +140,45 @@ header {
 }
 .searchAndBag {
     display: flex;
+}
+/* Unity stuff */
+.nav-filters:hover,
+.nav-filters:focus-within {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* backdrop-filter: blur(0px); */
+}
+/* Dropdown Styling - Unified Appearance */
+.dropdown-menu,
+.dropdown-content {
+    background-color: rgba(28, 28, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+/* Button States - Unified Color Change */
+.filter-button:hover, 
+.search:hover, 
+.bag:hover,
+.dropdown:hover .filter-button,
+.dropdown-container.active .search,
+.dropdown-container.active .bag {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+/* Dropdown Items - Unified Hover */
+.dropdown-menu a:hover,
+.dropdown-content p:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Remove Conflicting Transforms */
+.dropdown-menu {
+    transform: none !important;
+}
+
+/* Search Input - Match Dropdown Style */
+.dropdown-content input {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 /* Filter, Search, and Bag buttons */
 .filter-button, .search, .bag {

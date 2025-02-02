@@ -15,11 +15,18 @@ document.querySelectorAll('.dropdown-container').forEach(container => {
         if (!isActive) container.classList.add('active');
     });
 });
-
 // Close dropdowns when clicking outside
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.dropdown-container')) {
         document.querySelectorAll('.dropdown-container').forEach(c => 
             c.classList.remove('active'));
+    }
+});
+// nav bar stuff
+document.querySelector('.nav-filters').addEventListener('click', function(e) {
+    this.classList.toggle('active');
+    if (!e.target.closest('.dropdown, .dropdown-container')) {
+        document.querySelectorAll('.dropdown-menu, .dropdown-content')
+            .forEach(d => d.style.display = 'none');
     }
 });

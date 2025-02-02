@@ -67,3 +67,95 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+// Get references to carousel elements
+const track = document.querySelector('.carousel-track');
+let slides = Array.from(track.children);
+const nextButton = document.querySelector('.carousel-btn--right');
+const prevButton = document.querySelector('.carousel-btn--left');
+const dotsNav = document.querySelector('.carousel-nav');
+let dots = Array.from(dotsNav.children);
+
+// Clone first and last slides for infinite looping
+const firstSlideClone = slides[0].cloneNode(true);
+const lastSlideClone = slides[slides.length - 1].cloneNode(true);
+
+// Append and prepend clones
+track.appendChild(firstSlideClone);
+track.insertBefore(lastSlideClone, slides[0]);
+
+// Update slides array after cloning
+slides = Array.from(track.children);
+
+// Set initial index (accounting for the prepended clone)
+let currentSlideIndex = 1;
+
+// Set track position to show the first real slide
+const slideWidth = slides[currentSlideIndex].getBoundingClientRect().width;
+track.style.transform = `translateX(-${slideWidth * currentSlideIndex}px)`;
+
+// Function to update dot indicators (we have 4 real slides)
+function updateDots() {
+  // Calculate the real slide index (1-based offset from clone)
+  let realIndex = currentSlideIndex - 1;
+  if (realIndex < 0) {
+    realIndex = slides.length - 3;
+  }
+  if (realIndex >= slides.length - 2) {
+    realIndex = 0;
+  }
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('current', index === realIndex);
+  });
+}
+
+// Function to move to a slide with smooth transition
+function moveToSlide(index) {
+  const slideWidth = slides[index].getBoundingClientRect().width;
+  track.style.transition = 'transform 0.5s ease';
+  track.style.transform = `translateX(-${slideWidth * index}px)`;
+  currentSlideIndex = index;
+}
+
+// When transition ends, check if we're at a clone and jump without animation
+track.addEventListener('transitionend', () => {
+  if (slides[currentSlideIndex].classList.contains('clone')) {
+    track.style.transition = 'none';
+    if (currentSlideIndex === 0) {
+      currentSlideIndex = slides.length - 2;
+    } else if (currentSlideIndex === slides.length - 1) {
+      currentSlideIndex = 1;
+    }
+    const slideWidth = slides[currentSlideIndex].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${slideWidth * currentSlideIndex}px)`;
+  }
+  updateDots();
+});
+
+// Next Button
+nextButton.addEventListener('click', () => {
+  moveToSlide(currentSlideIndex + 1);
+});
+
+// Previous Button
+prevButton.addEventListener('click', () => {
+  moveToSlide(currentSlideIndex - 1);
+});
+
+// Optional: Dot navigation (only for the 4 real slides)
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    moveToSlide(index + 1);
+  });
+});
+
+// Mark clones for easier detection (optional)
+firstSlideClone.classList.add('clone');
+lastSlideClone.classList.add('clone');
+
+// Optional: Update carousel on window resize
+window.addEventListener('resize', () => {
+  const slideWidth = slides[currentSlideIndex].getBoundingClientRect().width;
+  track.style.transition = 'none';
+  track.style.transform = `translateX(-${slideWidth * currentSlideIndex}px)`;
+});
+

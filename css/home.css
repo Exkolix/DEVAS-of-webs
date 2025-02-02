@@ -144,10 +144,105 @@ body {
         opacity: 1;
     }
 }
-
+/* Explore Section Styling */
+.explore-section {
+    background-color: #ffffff; /* White background */
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .explore-heading {
+    font-family: Impact, sans-serif;
+    font-size: 3rem;
+    color: #000; /* Black color */
+    margin-bottom: 10px;
+  }
+  
+  .explore-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #333; /* Dark gray for readability */
+    margin-bottom: 30px;
+  }
+  
+  .explore-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  /* Base styling for normal explore buttons (New Arrivals & Special Offers) */
+.explore-btn {
+    font-family: Impact, sans-serif;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border: 1px solid #000;       /* Black border */
+    background-color: #fff;         /* White background */
+    color: #000;                    /* Black text */
+    border-radius: 50px;            /* Well-rounded */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Underline effect for normal buttons */
+  .explore-btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 5px;                  /* Small gap from text */
+    width: 0;
+    height: 3px;
+    background-color: #fff;       /* White underline */
+    transition: width 0.5s ease, left 0.5s ease;  /* Slower and smoother animation */
+  }
+  
+  .explore-btn:hover::after {
+    width: 70%;
+    left: 15%;                    /* Centers the 80% wide line */
+  }
+  
+  .explore-btn:hover {
+    background-color: #000;       /* Invert background on hover */
+    color: #fff;                  /* Invert text color */
+  }
+  
+  /* Special styling for the Collection button */
+  .collection-btn {
+    font-family: Impact, sans-serif;
+    font-size: 1.2rem;
+    padding: 12px 24px;
+    border: none;                 /* No border */
+    background: none;             /* No background */
+    color: #000;                  /* Black text */
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    /* No transition on background or text color */
+  }
+  
+  /* Underline for the Collection button */
+  .collection-btn::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 5px;
+    width: 0;
+    height: 3px;
+    background-color: #000;       /* Black underline */
+    transition: width 0.5s ease, left 0.5s ease;  /* Slower, smoother animation */
+  }
+  
+  .collection-btn:hover::after {
+    width: 80%;
+    left: 10%;
+  }
+      
 
 /* Shop Section */
-.shop-section {
+/* .shop-section {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -220,9 +315,173 @@ body {
     object-fit: cover;
 }
 .row.full-screen {
-    height: 100vh; /* Each row takes up the full height of the viewport */
+    height: 100vh; 
     overflow: hidden;
 }
 main{
     background-color: #FFFFFF;
-}
+} */
+
+
+
+/* ------------------------------
+   Carousel Section Styling
+------------------------------ */
+.carousel-section {
+    background-color: #FFFFFF;
+    padding: 0; /* Remove extra vertical padding for a full-screen effect */
+    position: relative;
+    margin-bottom: 40px;
+  }
+  
+  .carousel {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Carousel track container */
+  .carousel-track-container {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  /* Carousel track */
+  .carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Each slide occupies 95vw x 95vh */
+  .carousel-slide {
+    min-width: 100vw;
+    height: 80vh;
+    position: relative;
+    flex-shrink: 0;
+  }
+  
+  /* Shop category styles */
+  .shop-category {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Image styling for slides */
+  .carousel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: all 0.5s ease;
+  }
+  
+  .carousel-img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Shop overlay styling */
+  .shop-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+    z-index: 10;
+  }
+  
+  .shop-overlay h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+  }
+  
+  .shop-overlay h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 5px 0;
+  }
+  
+  .shop-overlay button {
+    padding: 10px 20px;
+    border: none;
+    background: white;
+    color: black;
+    font-size: 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .shop-overlay button:hover {
+    background: black;
+    color: white;
+  }
+  
+  /* Arrow Buttons */
+  .carousel-btn {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 20;
+    padding: 10px;
+    border-radius: 50px;
+  }
+  
+  .carousel-btn--left {
+    left: 10px;
+  }
+  
+  .carousel-btn--right {
+    right: 10px;
+  }
+  
+  /* Navigation Dots - placed over the image */
+  .carousel-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 30;
+  }
+  
+  .carousel-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50px;
+    margin: 0 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .carousel-indicator.current {
+    background-color: #000;
+  }
+  
+  /* ------------------------------
+     Dual Sections Styling
+  ------------------------------ */
+  .dual-section {
+    display: flex;
+    gap: 20px;
+    margin: 40px 20px;
+  }
+  
+  .dual-item {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 20px;
+  }
+  
+  

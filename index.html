@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="shortcut icon" href="Asset/images/Group 7.png" type="image/x-icon">
@@ -108,55 +111,122 @@
     </section>
     
     <main>
-        <section class="shop-section">
-            <!-- Row 1: Health & Fashion + Home Appliances -->
-            <div class="row">
-                <div class="shop-category half-width">
-                    <a href="health_fashion.html">
-                        <img src="Asset\images\cleanFurnitures.jpg" alt="Health & Fashion" class="shop-sec-img" draggable="false">
-                        <div class="shop-overlay">
-                            <h3>Stretch Freely</h3>
-                            <h2>Health & Fashion</h2>
-                            <button>Shop</button>
-                        </div>
-                    </a>
-                </div>
-                <div class="shop-category half-width">
-                    <a href="home_appliances.html">
-                        <img src="Asset/images/cleanFurnitures.jpg" alt="Home Appliances" class="shop-sec-img" draggable="false">
-                        <div class="shop-overlay">
-                            <h3>Upgrade Your Space</h3>
-                            <h2>Home Appliances</h2>
-                            <button>Shop</button>
-                        </div>
-                    </a>
-                </div>
+        <!-- 
+        SHOP
+         -->
+        <section class="explore-section">
+            <h2 class="explore-heading">Explore Our World</h2>
+            <p class="explore-text">
+              Discover the latest arrivals, exclusive collections, and special offers curated just for you.
+            </p>
+            <div class="explore-buttons">
+              <button class="explore-btn">New Arrivals</button>
+              <button class="collection-btn">Collection</button>
+              <button class="explore-btn">Special Offers</button>
             </div>
-        
-            <!-- Row 2: Accessories + Gadgets -->
-            <div class="row">
-                <div class="shop-category half-width">
-                    <a href="accessories.html">
-                        <img src="Asset\images\pexels-regeci-30385640.jpg" alt="Accessories" class="shop-sec-img" draggable="false">
-                        <div class="shop-overlay">
-                            <h3>Keep It Fresh</h3>
-                            <h2>Accessories</h2>
-                            <button>Shop</button>
-                        </div>
-                    </a>
+          </section>
+
+               <!-- 
+            SHOPPING CAROUSEL
+                             -->
+
+        <!-- Carousel Section for Categories -->
+        <!-- Carousel Section for Categories -->
+    <section class="carousel-section">
+        <div class="carousel">
+        <!-- Left Arrow -->
+        <button class="carousel-btn carousel-btn--left">
+            <i class="fa fa-chevron-left"></i>
+        </button>
+    
+        <!-- Carousel Track Container -->
+        <div class="carousel-track-container">
+            <ul class="carousel-track">
+            <!-- These slides will be manipulated in JS for infinite loop -->
+            <!-- Cloned last slide will be inserted at the beginning by JS -->
+            
+            <!-- Slide 1: Health & Fashion -->
+            <li class="carousel-slide">
+                <div class="shop-category">
+                <a href="health_fashion.html">
+                    <img src="Asset/images/cleanFurnitures.jpg" alt="Health & Fashion" class="carousel-img" draggable="false">
+                    <div class="shop-overlay">
+                    <h3>Stretch Freely</h3>
+                    <h2>Health & Fashion</h2>
+                    <button>Shop</button>
+                    </div>
+                </a>
                 </div>
-                <div class="shop-category half-width">
-                    <a href="gadgets.html">
-                        <img src="Asset\images\cleanFurnitures.jpg" alt="Gadgets" class="shop-sec-img" draggable="false">
-                        <div class="shop-overlay">
-                            <h3>Explore Innovation</h3>
-                            <h2>Gadgets</h2>
-                            <button>Shop</button>
-                        </div>
-                    </a>
+            </li>
+            <!-- Slide 2: Home Appliances -->
+            <li class="carousel-slide">
+                <div class="shop-category">
+                <a href="home_appliances.html">
+                    <img src="Asset/images/cleanFurnitures.jpg" alt="Home Appliances" class="carousel-img" draggable="false">
+                    <div class="shop-overlay">
+                    <h3>Upgrade Your Space</h3>
+                    <h2>Home Appliances</h2>
+                    <button>Shop</button>
+                    </div>
+                </a>
                 </div>
+            </li>
+            <!-- Slide 3: Accessories -->
+            <li class="carousel-slide">
+                <div class="shop-category">
+                <a href="accessories.html">
+                    <img src="Asset/images/pexels-regeci-30385640.jpg" alt="Accessories" class="carousel-img" draggable="false">
+                    <div class="shop-overlay">
+                    <h3>Keep It Fresh</h3>
+                    <h2>Accessories</h2>
+                    <button>Shop</button>
+                    </div>
+                </a>
+                </div>
+            </li>
+            <!-- Slide 4: Gadgets -->
+            <li class="carousel-slide">
+                <div class="shop-category">
+                <a href="gadgets.html">
+                    <img src="Asset/images/cleanFurnitures.jpg" alt="Gadgets" class="carousel-img" draggable="false">
+                    <div class="shop-overlay">
+                    <h3>Explore Innovation</h3>
+                    <h2>Gadgets</h2>
+                    <button>Shop</button>
+                    </div>
+                </a>
+                </div>
+            </li>
+            <!-- Cloned first slide will be appended by JS -->
+            </ul>
+        </div>
+    
+        <!-- Right Arrow -->
+        <button class="carousel-btn carousel-btn--right">
+            <i class="fa fa-chevron-right"></i>
+        </button>
+    
+        <!-- Navigation Dots (positioned on top of the image) -->
+        <div class="carousel-nav">
+            <button class="carousel-indicator current"></button>
+            <button class="carousel-indicator"></button>
+            <button class="carousel-indicator"></button>
+            <button class="carousel-indicator"></button>
+        </div>
+        </div>
+        <!-- Dual Sections Under the Carousel -->
+        <section class="dual-section">
+            <div class="dual-item">
+            <h2>Section 1 Title</h2>
+            <p>Content for the first side-by-side section goes here.</p>
+            </div>
+            <div class="dual-item">
+            <h2>Section 2 Title</h2>
+            <p>Content for the second side-by-side section goes here.</p>
             </div>
         </section>
+    </section>
+    
 
 
         <footer>
@@ -164,7 +234,7 @@
                 <!-- About Section -->
                 <div class="footer-column">
                     <h3>About DARiAL</h3>
-                    <p>Creating an ecosysterm that allow you to work in hormony with your environment.</p>
+                    <p>Creating an ecosystem that allow you to work in harmony with your environment.</p>
                 </div>
         
                 <!-- Quick Links -->
