@@ -25,7 +25,9 @@ body {
     color: #FFFFFF;
 }
 
-/* Hero Section */
+/* --------------
+    Hero Section 
+   -------------- */
 .hero {
     position: relative;
     width: 100%;
@@ -63,7 +65,7 @@ body {
     text-align: center;
     letter-spacing: 2px;
     text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    position: relative; /* Position the text relative to the image */
+    position: relative; 
     font-size: clamp(2rem, 5vw, 4rem);
 }
 /* Individual Parts */
@@ -101,7 +103,7 @@ body {
 .hero-subtext {
     font-family: 'Roboto', sans-serif;
     opacity: 0;
-    transform: translateY(20px); /* Slide-up effect */
+    transform: translateY(20px); 
     transition: opacity 1s ease, transform 1s ease;
     font-size: 1.5rem;
     color: #E5E5E5;
@@ -135,7 +137,7 @@ body {
     text-shadow: 0 4px 10px rgba(0, 0, 0, 1);
 }
 
-/* Animation Delay */
+/* Animation*/
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -144,9 +146,11 @@ body {
         opacity: 1;
     }
 }
-/* Explore Section Styling */
+/* ------------------------
+    Explore Section Styling 
+  ------------------------ */
 .explore-section {
-    background-color: #ffffff; /* White background */
+    background-color: #ffffff; 
     padding: 40px 20px;
     text-align: center;
   }
@@ -154,14 +158,14 @@ body {
   .explore-heading {
     font-family: Impact, sans-serif;
     font-size: 3rem;
-    color: #000; /* Black color */
+    color: #000;
     margin-bottom: 10px;
   }
   
   .explore-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
-    color: #333; /* Dark gray for readability */
+    color: #333; 
     margin-bottom: 30px;
   }
   
@@ -172,15 +176,15 @@ body {
     flex-wrap: wrap;
   }
   
-  /* Base styling for normal explore buttons (New Arrivals & Special Offers) */
+  /* Base styling  */
 .explore-btn {
     font-family: Impact, sans-serif;
     font-size: 1.2rem;
     padding: 12px 24px;
-    border: 1px solid #000;       /* Black border */
-    background-color: #fff;         /* White background */
-    color: #000;                    /* Black text */
-    border-radius: 50px;            /* Well-rounded */
+    border: 1px solid #000;
+    background-color: #fff;
+    color: #000;
+    border-radius: 50px;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -192,21 +196,21 @@ body {
     content: "";
     position: absolute;
     left: 50%;
-    bottom: 5px;                  /* Small gap from text */
+    bottom: 5px;
     width: 0;
     height: 3px;
-    background-color: #fff;       /* White underline */
-    transition: width 0.5s ease, left 0.5s ease;  /* Slower and smoother animation */
+    background-color: #fff;
+    transition: width 0.5s ease, left 0.5s ease; 
   }
   
   .explore-btn:hover::after {
     width: 70%;
-    left: 15%;                    /* Centers the 80% wide line */
+    left: 15%;
   }
   
   .explore-btn:hover {
-    background-color: #000;       /* Invert background on hover */
-    color: #fff;                  /* Invert text color */
+    background-color: #000;
+    color: #fff;
   }
   
   /* Special styling for the Collection button */
@@ -214,13 +218,12 @@ body {
     font-family: Impact, sans-serif;
     font-size: 1.2rem;
     padding: 12px 24px;
-    border: none;                 /* No border */
-    background: none;             /* No background */
-    color: #000;                  /* Black text */
+    border: none;                 
+    background: none;             
+    color: #000;
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    /* No transition on background or text color */
   }
   
   /* Underline for the Collection button */
@@ -231,8 +234,8 @@ body {
     bottom: 5px;
     width: 0;
     height: 3px;
-    background-color: #000;       /* Black underline */
-    transition: width 0.5s ease, left 0.5s ease;  /* Slower, smoother animation */
+    background-color: #000;       
+    transition: width 0.5s ease, left 0.5s ease;  
   }
   
   .collection-btn:hover::after {
@@ -240,90 +243,6 @@ body {
     left: 10%;
   }
       
-
-/* Shop Section */
-/* .shop-section {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: #FFFFFF;
-    padding: 10px;
-}
-
-.row {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.shop-category {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-
-
-.shop-category img {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-
-.shop-overlay {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: #fff;
-    z-index: 10;
-}
-
-.shop-overlay h3 {
-    font-size: 1rem;
-    font-weight: 400;
-    margin: 0;
-}
-
-.shop-overlay h2 {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 5px 0;
-}
-
-.shop-overlay button {
-    padding: 10px 20px;
-    border: none;
-    background: white;
-    color: black;
-    font-size: 1rem;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.shop-overlay button:hover {
-    background: black;
-    color: white;
-}
-.shop-sec-img{
-    height: 100%;
-}
-
-.row img {
-    height: 90vh;
-    object-fit: cover;
-}
-.row.full-screen {
-    height: 100vh; 
-    overflow: hidden;
-}
-main{
-    background-color: #FFFFFF;
-} */
-
-
-
 /* ------------------------------
    Carousel Section Styling
 ------------------------------ */
@@ -435,6 +354,7 @@ main{
     z-index: 20;
     padding: 10px;
     border-radius: 50px;
+    padding: 2px;
   }
   
   .carousel-btn--left {
@@ -472,16 +392,77 @@ main{
   /* ------------------------------
      Dual Sections Styling
   ------------------------------ */
-  .dual-section {
+
+/* Dual Shopping Sections Styling */
+.dual-section {
     display: flex;
     gap: 20px;
     margin: 40px 20px;
+    flex-wrap: wrap;  /* In case on small screens they stack */
+    padding-bottom: 40px;
   }
   
   .dual-item {
     flex: 1;
-    background-color: #f9f9f9;
-    padding: 20px;
+    position: relative;
+    overflow: hidden;
   }
   
+  /* Use similar styling as .shop-category from your carousel */
+  .dual-item .shop-category {
+    width: 100%;
+    height: 70vh; /* Adjust height as desired */
+    position: relative;
+    overflow: hidden;
+  }
   
+  /* Dual images fill the container and use object-fit: cover */
+  .dual-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Overlay styling matching carousel overlay */
+  .dual-item .shop-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.4); 
+    color: #fff;
+    z-index: 10;
+    padding: 10px 20px;
+    border-radius: 5px;
+    max-width: 80%; 
+  }
+  
+  .dual-item .shop-overlay h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0;
+  }
+  
+  .dual-item .shop-overlay h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 5px 0;
+  }
+  
+  /* Button styled similar to carousel overlay buttons */
+  .dual-item .shop-overlay button {
+    padding: 10px 20px;
+    border: none;
+    background: #fff;
+    color: #000;
+    font-size: 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .dual-item .shop-overlay button:hover {
+    background: #000;
+    color: #fff;
+  }
