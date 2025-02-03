@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #000000;
+    overflow-x: hidden;
 }
 
 
@@ -15,6 +16,7 @@ body {
 .bag-dropdown {
     display: none;
     position: absolute;
+    width: 30vw;
     right: 0;
     top: 100%;
     background: white;
@@ -61,67 +63,92 @@ body {
     display: flex;
     background-color: #ffffff;
 }
-/* Filter Sidebar */
+/* ---------------- 
+    Filter Sidebar 
+------------------ */
+
+/* Filter Sidebar remains unchanged for overall layout */
 .filter-sidebar {
+    position: sticky;
+    top: 0;
     background-color: #000;
     padding: 10px;
     width: 370px;
     height: 100vh;
-    position: sticky;
-    top: 0;
     align-self: flex-start;
     z-index: 1;
-}
-.filter-sidebar.expand {
-    transform: translateY(60px);
-    transition: all 0.3s ease;
+    overflow-y: auto;
   }
   
-.filter-section label {
+  /* Styling for filter sections */
+  .filter-section {
+    border-bottom: 1px solid #333;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+  }
+  
+  /* The header of each filter section */
+  .filter-header {
+    font-size: 1.1rem;
+    color: #fff;
+    cursor: pointer;
+    margin: 0;
+    padding: 5px 0;
+  }
+  
+  /* Initially hide the filter content */
+  .filter-content {
+    display: none;
+    margin-top: 5px;
+  }
+  
+  /* When active, show the content */
+  .filter-section.active .filter-content {
+    display: block;
+  }
+  
+  /* Keep label styles (unchanged) */
+  .filter-section label {
     display: block;
     margin-bottom: 8px;
     font-size: 0.9rem;
     color: #bbbbbb;
-}
-
-.color-options {
-    display: flex;
-    gap: 10px;
-}
-
-.color-circle {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 1px solid #ccc;
-    cursor: pointer;
-}
+  }
+  
 
 
-/* Product Grid */
+/* ---------------
+    Product Grid 
+  -------------- */
 .product-grid {
     width: 80%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); */
     gap: 20px;
     padding: 20px;
+    padding-top: 50px;
 }
 
 .product-card {
     background: #ffffff;
     height: calc(100vh - 150px);
     padding: 10px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    text-align: left;
+    border-radius: 50px;
 }
-
-
+.productName {
+    color: rgb(216, 58, 0);
+}
+.category{
+    color: #c7c7c7;
+}
 .product-card img {
     width: 100%;
     height: auto;
+    max-height: 300px;
+    min-height: 274px;
     margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 .product-card h4 {
@@ -131,5 +158,11 @@ body {
 
 .product-card p {
     font-size: 0.9rem;
-    color: #ffffff;
+    color: #000000;
+}
+.price {
+    color: #000000;
+}
+.description {
+ color: #000;
 }

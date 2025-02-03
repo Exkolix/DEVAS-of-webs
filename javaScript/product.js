@@ -1,33 +1,62 @@
-const navbar = document.querySelector('.nav-filters');
-const sidebar = document.querySelector('.filter-sidebar');
-
-// Sample product array (add this to product.js)
+// Sample product array
 const products = [
     {
         id: 1,
-        name: "Wireless Headphones",
-        price: 199.99,
-        image: "https://picsum.photos/300/300?random=1",
-        description: "Premium noise-canceling wireless headphones with 30-hour battery life"
+        name: "Speaker",
+        category: "gadgets",
+        price: 120,
+        image: "Asset/Products/Gadget-white360Speaker.jpg",
+        description: "Powerful sound with sleek design.",
+        special: ["new", "onSale"],
     },
     {
         id: 2,
-        name: "Smart Fitness Watch",
-        price: 149.99,
-        image: "https://picsum.photos/300/300?random=2",
-        description: "Heart rate monitor, GPS tracking, and water-resistant design"
+        name: "EarBuds",
+        category: "accessory",
+        price: 50,
+        image: "Asset/Products/Accessory-earplugs.jpg",
+        description: "Lightweight and comfortable",
+        special: ["onSale", "trending"],
     },
     {
         id: 3,
-        name: "Compact Blender",
-        price: 89.99,
-        image: "https://picsum.photos/300/300?random=3",
-        description: "Portable high-speed blender for smoothies and shakes"
+        name: "RGB Health ring",
+        category: "accessory",
+        price: 500,
+        image: "Asset/Products/Acceccory-RgbSmartRing.jpg",
+        description: "Health tracking with vibrant lighting.",
+        special: ["limited"],
     },
-    // Add more products as needed
+    {
+        id: 4,
+        name: "Health ring",
+        category: "accessory",
+        price: 800,
+        image: "Asset/Products/Accessory-SmartRing.jpg",
+        description: "Advanced health tracking in a stylish ring.",
+        special: ["limited"],
+    },
+    {
+        id: 5,
+        name: "Smartwatch",
+        category: "gadgets",
+        price: 2000,
+        image: "Asset/Products/Accessory-smartWatch2.jpg",
+        description: "Stay connected with your health and fitness.",
+        special: ["new"],
+    },
+    {
+        id: 6,
+        name: "Black leather jacket",
+        category: "Health and Fashion",
+        price: 1200,
+        image: "Asset/Products/Fashio-Jacket.jpg",
+        description: "Comfortable and stylish.",
+        special: ["trending"],
+    },
 ];
 
-// Render function (add this to product.js)
+// Render function: renders products in the product grid
 function renderProducts(productsArray) {
     const productGrid = document.querySelector('.product-grid');
     
@@ -41,14 +70,17 @@ function renderProducts(productsArray) {
         productCard.innerHTML = `
             <img src="${product.image}" alt="${product.name}">
             <div class="product-info">
-                <h4>${product.name}</h4>
-                <p class="price">$${product.price.toFixed(2)}</p>
+                <h4 class="productName">${product.name}</h4>
                 <p class="description">${product.description}</p>
-                <button onclick="addToCart(${product.id})">Add to Cart</button>
+                <h4 class="category">${product.category}</h4>
+                <p class="price">$${product.price.toFixed(2)}</p>
+                <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}" data-image="${product.image}">Add to Bag</button>
             </div>
         `;
         productGrid.appendChild(productCard);
     });
+
+    attachCartEventListeners();
 }
 
 // Initial render when page loads
@@ -56,108 +88,153 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProducts(products);
 });
 
-// Add this placeholder function for the Add to Cart button (add to main.js)
-function addToCart(productId) {
-    // Your cart logic will go here
-    console.log(`Added product ${productId} to cart`);
+// Filtering logic: update this if you add more filters
+function filterProducts() {
+    const selectedCategories = Array.from(document.querySelectorAll('.filter-section input[type=checkbox]:checked'))
+        .map(input => input.value);
+    const filteredProducts = products.filter(product =>
+        selectedCategories.length === 0 || selectedCategories.includes(product.category)
+    );
+    renderProducts(filteredProducts);
 }
-// Add event listeners to checkboxes for real-time filtering
-document.querySelectorAll('.price-filter').forEach(checkbox => {
-    checkbox.addEventListener('change', filterProducts);
+
+document.querySelectorAll('.filter-section input[type=checkbox]').forEach(input => {
+    input.addEventListener('change', filterProducts);
 });
 
-// Initial render (show all products by default)
-renderProducts(products);
-// Cart logic
+// --------------------------
+// Cart (Bag) System
+// --------------------------
+
 // Cart array to store added products
 let cart = [];
 
-// Function to update cart UI
-function updateCartCount() {
-    const cartCount = document.querySelector('.cart span');
-    cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0); // Total items in cart
+// Update Cart UI: now includes image, name, and price
+function updateBag() {
+    const bagDropdown = document.getElementById("bag-dropdown");
+    bagDropdown.innerHTML = "";
+    
+    if (cart.length === 0) {
+        bagDropdown.innerHTML = "<p>Your bag is empty.</p>";
+        return;
+    }
+    
+    let totalPrice = 0;
+    cart.forEach(item => {
+        totalPrice += item.price * item.quantity;
+        bagDropdown.innerHTML += `
+            <div class="bag-item">
+                <img src="${item.image}" alt="${item.name}" class="bag-item-img">
+                <div class="bag-item-info">
+                    <p>${item.name} (x${item.quantity})</p>
+                    <p>$${(item.price * item.quantity).toFixed(2)}</p>
+                </div>
+            </div>
+        `;
+    });
+    
+    bagDropdown.innerHTML += `<p class="bag-total"><strong>Total: $${totalPrice.toFixed(2)}</strong></p>`;
 }
 
 // Function to add product to the cart
-function addToCart(productId, productName, productPrice) {
-    // Check if the product already exists in the cart
-    const existingProduct = cart.find(item => item.id === productId);
-    if (existingProduct) {
-        existingProduct.quantity += 1; // Increment quantity
+function addToBag(productId, productName, productPrice, productImage) {
+    const existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+        existingItem.quantity += 1;
     } else {
-        // Add new product to cart
-        cart.push({
-            id: productId,
-            name: productName,
-            price: productPrice,
-            quantity: 1
-        });
-    }
-    updateCartCount(); // Update the cart icon
-    console.log(cart); // Log cart contents for debugging
-}
-
-// Attach event listeners to "Add to Cart" buttons
-document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', () => {
-        const productId = parseInt(button.dataset.id);
-        const productName = button.dataset.name;
-        const productPrice = parseFloat(button.dataset.price);
-        addToCart(productId, productName, productPrice);
-    });
-});
-
-// Initialize cart count
-updateCartCount();
-
-// Bag system
-let bag = []; // Array to store bag items
-
-const bagCount = document.getElementById("bag-count");
-const bagItems = document.getElementById("bag-items");
-const bagTotal = document.getElementById("bag-total");
-const bagDropdown = document.getElementById("bag-dropdown");
-
-// Add to Bag Function
-function addToBag(productName, productPrice) {
-    const itemIndex = bag.findIndex((item) => item.name === productName);
-    if (itemIndex > -1) {
-        // If item already exists, increase its quantity
-        bag[itemIndex].quantity += 1;
-    } else {
-        // Otherwise, add new item
-        bag.push({ name: productName, price: productPrice, quantity: 1 });
+        cart.push({ id: productId, name: productName, price: productPrice, image: productImage, quantity: 1 });
     }
     updateBag();
 }
 
-// Update Bag UI
-function updateBag() {
-    // Update count
-    bagCount.textContent = bag.reduce((total, item) => total + item.quantity, 0);
-
-    // Update bag items
-    bagItems.innerHTML = "";
-    let totalPrice = 0;
-    bag.forEach((item) => {
-        const listItem = document.createElement("li");
-        listItem.innerHTML = `${item.name} (x${item.quantity}) - $${item.price * item.quantity}`;
-        bagItems.appendChild(listItem);
-        totalPrice += item.price * item.quantity;
+// Attach event listeners to "Add to Cart" buttons
+function attachCartEventListeners() {
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', (e) => {
+            // Prevent event bubbling if needed
+            e.stopPropagation();
+            const productId = parseInt(button.dataset.id);
+            const productName = button.dataset.name;
+            const productPrice = parseFloat(button.dataset.price);
+            const productImage = button.dataset.image;
+            addToBag(productId, productName, productPrice, productImage);
+        });
     });
-
-    // Update total price
-    bagTotal.textContent = totalPrice.toFixed(2);
 }
 
-// Toggle Bag Dropdown
+// Initialize cart count / bag UI on page load
+updateBag();
+
+// --------------------------
+// Bag Dropdown Toggle
 document.querySelector(".bag").addEventListener("click", () => {
-    bagDropdown.classList.toggle("active");
+    document.getElementById("bag-dropdown").classList.toggle("active");
+});
+// Filtering logic: update filterProducts to handle category, price, and special filters
+function filterProducts() {
+    // Category filters: select checkboxes that are not price or special filters
+    // Expected values: "gadgets", "accessory", "health and fashion", "home appliances"
+    const categoryFilters = Array.from(
+        document.querySelectorAll('.filter-section input[type=checkbox]:not(.price-filter):not(.special-filter):checked')
+    ).map(input => input.value.toLowerCase());
+    
+    // Price filters: using the .price-filter class
+    // Expected values: "0-50", "50-100", "100-250", "250-500", "500-1000", "1000+"
+    const priceFilters = Array.from(document.querySelectorAll('.price-filter:checked')).map(input => input.value);
+    
+    // Special filters: using the .special-filter class
+    // Expected values: "new", "onSale", "trending", "bestSeller", "limited", "exclusive", "featured"
+    const specialFilters = Array.from(document.querySelectorAll('.special-filter:checked')).map(input => input.value);
+    
+    const filteredProducts = products.filter(product => {
+        // Check category: if no category filter is selected, pass all; otherwise product.category must exactly match one of the selected values.
+        const categoryMatch = categoryFilters.length === 0 || categoryFilters.includes(product.category.toLowerCase());
+        
+        // Check price: if no price filter is selected, pass all; otherwise, product.price must fall within at least one selected range.
+        let priceMatch = true;
+        if (priceFilters.length > 0) {
+            priceMatch = priceFilters.some(range => {
+                // For range format "0-50", "50-100", etc.
+                if (range.includes('+')) {
+                    // For values like "1000+", parse minimum
+                    const min = parseFloat(range.replace('+', ''));
+                    return product.price >= min;
+                } else {
+                    const [minStr, maxStr] = range.split('-');
+                    const min = parseFloat(minStr);
+                    const max = parseFloat(maxStr);
+                    return product.price >= min && product.price <= max;
+                }
+            });
+        }
+        
+        // Check special: if no special filter is selected, pass all; else product.special (an array) must include at least one selected tag.
+        let specialMatch = true;
+        if (specialFilters.length > 0) {
+            specialMatch = specialFilters.some(tag => product.special.includes(tag));
+        }
+        
+        return categoryMatch && priceMatch && specialMatch;
+    });
+    
+    renderProducts(filteredProducts);
+}
+
+// Attach event listeners to all checkboxes in filter sections
+document.querySelectorAll('.filter-section input[type=checkbox]').forEach(input => {
+    input.addEventListener('change', filterProducts);
 });
 
-// Example: Add event listeners to "Add to Bag" buttons
-document.querySelectorAll(".product-card").forEach((card) => {
-    const productName = card.querySelector("h4").textContent;
-    const productPrice = parseFloat(card.querySelector("p").textContent.replace("$", ""));
-    card.addEventListener("click", () => addToBag(productName, productPrice));
+// Initial render (show all products by default)
+document.addEventListener('DOMContentLoaded', () => {
+    renderProducts(products);
+});
+
+
+// Toggle dropdown for filter sections
+document.querySelectorAll('.filter-header').forEach(header => {
+    header.addEventListener('click', () => {
+        // Toggle active class on the parent filter-section
+        header.parentElement.classList.toggle('active');
+    });
 });

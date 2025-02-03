@@ -2,7 +2,6 @@
 html, body {
     width: 100%;
     max-width: 100%;
-    overflow-x: hidden;
     margin: 0;
     padding: 0;
 }
@@ -180,6 +179,37 @@ header {
     background-color: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+/* --------------------
+    Bag Dropdown Styles
+ ----------------------- */
+#bag-dropdown {
+    padding: 10px;
+    width: 30vw;
+}
+
+.bag-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.bag-item-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.bag-item-info p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.bag-total {
+    margin-top: 10px;
+    font-size: 1rem;
+}
 /* Filter, Search, and Bag buttons */
 .filter-button, .search, .bag {
     color: #E5E5E5;
@@ -243,7 +273,6 @@ footer {
     background-color: #1C1C1E;
     color: #E5E5E5;
     padding: 40px 20px;
-    margin-top: 40px;
 }
 
 .footer-container {

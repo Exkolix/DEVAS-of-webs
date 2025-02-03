@@ -49,8 +49,9 @@
                 <button class="filter-button">Explore</button>
                 <!-- Drop -->
                 <div class="dropdown-menu full-width">
-                    <a href="#">Lookbook</a>
-                    <a href="#">hiii</a>
+                    <a href="#">New arrivals</a>
+                    <a href="#">Collection</a>
+                    <a href="#">Special Offers</a>
                 </div>
             </div>
 
@@ -58,10 +59,10 @@
                 <button class="filter-button">Shop</button>
                 <!-- Drop -->
                 <div class="dropdown-menu full-width">
-                    <a href="health_fashion.html">Health & Fashion</a>
-                    <a href="home_appliances.html">Home appliancies</a>
-                    <a href="accessores.html">Accesories</a>
-                    <a href="gadgets.html">Gadgets</a>
+                    <a href="Products.html">Health & Fashion</a>
+                    <a href="Products.html">Home appliances</a>
+                    <a href="Products.html">Accessories</a>
+                    <a href="Products.html">Gadgets</a>
                 </div>
             </div>
 
@@ -94,25 +95,54 @@
     </section>        
 
 
+
+
+
     <main>
         <div class="container">
             <!-- Filter Sidebar -->
             <aside class="filter-sidebar">
                 <h3>Filter by</h3>
+                
+                <!-- Category Filter Dropdown -->
                 <div class="filter-section">
-                    <h4>Category</h4>
-                    <label><input type="checkbox" value="shoes"> Shoes</label>
-                    <label><input type="checkbox" value="clothing"> Clothing</label>
-                    <label><input type="checkbox" value="accessories"> Accessories</label>
+                  <h4 class="filter-header">Category</h4>
+                  <div class="filter-content">
+                    <label><input type="checkbox" value="gadgets"> Gadgets</label>
+                    <label><input type="checkbox" value="accessory"> Accessory</label>
+                    <label><input type="checkbox" value="health and fashion"> Health & Fashion</label>
+                    <label><input type="checkbox" value="home appliances"> Home Appliances</label>
+                  </div>
                 </div>
+                
+                <!-- Price Filter Dropdown -->
                 <div class="filter-section">
-                    <h4>Price</h4>
+                  <h4 class="filter-header">Price</h4>
+                  <div class="filter-content">
                     <label><input type="checkbox" class="price-filter" value="0-50"> $0 - $50</label>
-                    <label><input type="checkbox" class="price-filter" value="51-100"> $51 - $100</label>
-                    <label><input type="checkbox" class="price-filter" value="101-200"> $101 - $200</label>
-                    <label><input type="checkbox" class="price-filter" value="201-500"> $201 - $500</label>
+                    <label><input type="checkbox" class="price-filter" value="50-100"> $50 - $100</label>
+                    <label><input type="checkbox" class="price-filter" value="100-250"> $100 - $250</label>
+                    <label><input type="checkbox" class="price-filter" value="250-500"> $250 - $500</label>
+                    <label><input type="checkbox" class="price-filter" value="500-1000"> $500 - $1000</label>
+                    <label><input type="checkbox" class="price-filter" value="1000+"> $1000+</label>
+                  </div>
                 </div>
-            </aside>
+                
+                <!-- Special Filter Dropdown -->
+                <div class="filter-section">
+                  <h4 class="filter-header">Special</h4>
+                  <div class="filter-content">
+                    <label><input type="checkbox" class="special-filter" value="new"> New</label>
+                    <label><input type="checkbox" class="special-filter" value="onSale"> On Sale</label>
+                    <label><input type="checkbox" class="special-filter" value="trending"> Trending</label>
+                    <label><input type="checkbox" class="special-filter" value="bestSeller"> Best Seller</label>
+                    <label><input type="checkbox" class="special-filter" value="limited"> Limited</label>
+                    <label><input type="checkbox" class="special-filter" value="exclusive"> Exclusive</label>
+                    <label><input type="checkbox" class="special-filter" value="featured"> Featured</label>
+                  </div>
+                </div>
+              </aside>
+              
 
             <!-- Product Grid -->
 

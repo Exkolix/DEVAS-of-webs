@@ -111,3 +111,11 @@
 
 //////////////////////////////////
 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+--------------------------------------------------------------------
+"new" → For newly added products
+"onSale" → Products with discounts
+"trending" → Popular products
+"bestSeller" → Top-selling items
+"limited" → Limited-time deals
+"exclusive" → Special or premium items
+"featured" → Products promoted in highlights
