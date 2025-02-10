@@ -179,13 +179,14 @@ function attachCartEventListeners() {
 }
 // Event delegation for quantity buttons to prevent dropdown closure
 document.addEventListener('click', (e) => {
-document.getElementById("bag-dropdown").addEventListener("click", (e) => {
-    if (e.target.classList.contains("updButton-minus")) {
-        const productId = parseInt(e.target.closest(".bag-item").dataset.id);
+    if (e.target.classList.contains('decrease-qty')) {
+        e.stopPropagation();
+        const productId = parseInt(e.target.dataset.id);
         updateQuantity(productId, -1);
     }
-    if (e.target.classList.contains("updButton-plus")) {
-        const productId = parseInt(e.target.closest(".bag-item").dataset.id);
+    if (e.target.classList.contains('increase-qty')) {
+        e.stopPropagation();
+        const productId = parseInt(e.target.dataset.id);
         updateQuantity(productId, 1);
     }
 });
