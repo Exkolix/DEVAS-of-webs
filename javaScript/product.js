@@ -109,28 +109,33 @@ document.querySelectorAll('.filter-section input[type=checkbox]').forEach(input 
 // Cart array to store added products
 let cart = [];
 
-// Update Cart UI: now includes image, name, and price
+// Update Cart UI: formatted layout with image on the left, name in the middle, price on the right
 function updateBag() {
     const bagDropdown = document.getElementById("bag-dropdown");
     bagDropdown.innerHTML = "";
     
     if (cart.length === 0) {
-        bagDropdown.innerHTML = "<p>Your bag is empty.</p>";
+        bagDropdown.innerHTML = `<p class="no-item">Your bag is empty.</p>`;
         return;
     }
-    
     let totalPrice = 0;
     cart.forEach(item => {
         totalPrice += item.price * item.quantity;
         bagDropdown.innerHTML += `
-            <div class="bag-item">
-                <img src="${item.image}" alt="${item.name}" class="bag-item-img">
-                <div class="bag-item-info">
-                    <p>${item.name} (x${item.quantity})</p>
-                    <p>$${(item.price * item.quantity).toFixed(2)}</p>
+        <div class="bag-item">
+            <img src="${item.image}" alt="${item.name}" class="bag-item-img">
+            <div class="bag-item-info">
+                <p class="bag-item-name">${item.name}</p> <!-- Name on top -->
+                <div class="quantity-selector">
+                    <button onclick="updateQuantity(${item.id}, -1 )" class="updButton-minus">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="updateQuantity(${item.id}, 1)" class="updButton-plus">+</button>
                 </div>
             </div>
-        `;
+            <p class="bag-item-price">$${(item.price * item.quantity).toFixed(2)}</p>
+        </div>
+        <br class = "break">
+    `;
     });
     
     bagDropdown.innerHTML += `<p class="bag-total"><strong>Total: $${totalPrice.toFixed(2)}</strong></p>`;
@@ -147,11 +152,22 @@ function addToBag(productId, productName, productPrice, productImage) {
     updateBag();
 }
 
+// Function to update item quantity
+function updateQuantity(productId, change) {
+    const item = cart.find(item => item.id === productId);
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            cart = cart.filter(item => item.id !== productId); // Remove item if quantity is 0
+        }
+        updateBag();
+    }
+}
+
 // Attach event listeners to "Add to Cart" buttons
 function attachCartEventListeners() {
     document.querySelectorAll('.add-to-cart').forEach(button => {
         button.addEventListener('click', (e) => {
-            // Prevent event bubbling if needed
             e.stopPropagation();
             const productId = parseInt(button.dataset.id);
             const productName = button.dataset.name;
@@ -161,6 +177,18 @@ function attachCartEventListeners() {
         });
     });
 }
+// Event delegation for quantity buttons to prevent dropdown closure
+document.addEventListener('click', (e) => {
+document.getElementById("bag-dropdown").addEventListener("click", (e) => {
+    if (e.target.classList.contains("updButton-minus")) {
+        const productId = parseInt(e.target.closest(".bag-item").dataset.id);
+        updateQuantity(productId, -1);
+    }
+    if (e.target.classList.contains("updButton-plus")) {
+        const productId = parseInt(e.target.closest(".bag-item").dataset.id);
+        updateQuantity(productId, 1);
+    }
+});
 
 // Initialize cart count / bag UI on page load
 updateBag();
