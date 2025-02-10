@@ -134,7 +134,7 @@ function updateBag() {
             </div>
             <p class="bag-item-price">$${(item.price * item.quantity).toFixed(2)}</p>
         </div>
-        <br class = "break">
+        <hr class = "break">
     `;
     });
     
