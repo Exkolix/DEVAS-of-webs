@@ -60,10 +60,8 @@ const products = [
 function renderProducts(productsArray) {
     const productGrid = document.querySelector('.product-grid');
     
-    // Clear existing products
-    productGrid.innerHTML = '';
+    productGrid.innerHTML = ''; // Clear existing products
 
-    // Create product cards
     productsArray.forEach(product => {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
@@ -74,14 +72,15 @@ function renderProducts(productsArray) {
                 <p class="description">${product.description}</p>
                 <h4 class="category">${product.category}</h4>
                 <p class="price">$${product.price.toFixed(2)}</p>
-                <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}" data-image="${product.image}">Add to Bag</button>
             </div>
+            <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}" data-image="${product.image}">Add to Bag</button>
         `;
         productGrid.appendChild(productCard);
     });
 
-    attachCartEventListeners();
+    attachProductPopupListeners(); // Call this after rendering products
 }
+
 
 // Initial render when page loads
 document.addEventListener('DOMContentLoaded', () => {
@@ -267,3 +266,56 @@ document.querySelectorAll('.filter-header').forEach(header => {
         header.parentElement.classList.toggle('active');
     });
 });
+// ---------------
+// Popup function
+// ---------------
+// Select popup elements
+const popup = document.getElementById("product-popup");
+const popupImage = document.getElementById("popup-image");
+const popupName = document.getElementById("popup-name");
+const popupDescription = document.getElementById("popup-description");
+const popupPrice = document.getElementById("popup-price");
+const closePopup = document.querySelector(".close-popup");
+const popupBuy = document.getElementById("popup-buy");
+const popupAddToBag = document.getElementById("popup-add-to-bag");
+
+// Show product popup when a product is clicked
+function showProductPopup(product) {
+    popupImage.src = product.image;
+    popupName.textContent = product.name;
+    popupDescription.textContent = product.description;
+    popupPrice.textContent = `$${product.price.toFixed(2)}`;
+    
+    // Set Buy Now and Add to Bag button actions
+    popupBuy.onclick = () => alert(`Buying: ${product.name}`);
+    popupAddToBag.onclick = () => addToBag(product.id, product.name, product.price, product.image);
+    
+    popup.style.display = "flex";
+}
+
+// Hide popup when clicking close button
+closePopup.addEventListener("click", () => {
+    popup.style.display = "none";
+});
+
+// Close popup when clicking outside the content box
+popup.addEventListener("click", (event) => {
+    if (event.target === popup) {
+        popup.style.display = "none";
+    }
+});
+
+// Attach event listeners to product cards
+function attachProductPopupListeners() {
+    document.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener("click", () => {
+            const productId = parseInt(card.querySelector(".add-to-cart").dataset.id);
+            const product = products.find(p => p.id === productId);
+            if (product) showProductPopup(product);
+        });
+    });
+}
+
+// Call this function after rendering products
+renderProducts(products);
+attachProductPopupListeners();
