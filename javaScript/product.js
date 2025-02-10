@@ -73,12 +73,13 @@ function renderProducts(productsArray) {
                 <h4 class="category">${product.category}</h4>
                 <p class="price">$${product.price.toFixed(2)}</p>
             </div>
-            <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}" data-image="${product.image}">Add to Bag</button>
         `;
+
+        // Open the popup when product is clicked
+        productCard.addEventListener('click', () => openProductPopup(product));
+
         productGrid.appendChild(productCard);
     });
-
-    attachProductPopupListeners(); // Call this after rendering products
 }
 
 
@@ -270,40 +271,82 @@ document.querySelectorAll('.filter-header').forEach(header => {
 // Popup function
 // ---------------
 // Select popup elements
-const popup = document.getElementById("product-popup");
-const popupImage = document.getElementById("popup-image");
-const popupName = document.getElementById("popup-name");
-const popupDescription = document.getElementById("popup-description");
-const popupPrice = document.getElementById("popup-price");
-const closePopup = document.querySelector(".close-popup");
-const popupBuy = document.getElementById("popup-buy");
-const popupAddToBag = document.getElementById("popup-add-to-bag");
+function renderProducts(productsArray) {
+    const productGrid = document.querySelector('.product-grid');
+    productGrid.innerHTML = ''; // Clear existing products
 
-// Show product popup when a product is clicked
+    productsArray.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        productCard.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <div class="product-info">
+                <h4 class="productName">${product.name}</h4>
+                <p class="description">${product.description}</p>
+                <h4 class="category">${product.category}</h4>
+                <p class="price">$${product.price.toFixed(2)}</p>
+            </div>
+        `;
+
+        // Open the popup when product card is clicked
+        productCard.addEventListener('click', () => showProductPopup(product));
+
+        productGrid.appendChild(productCard);
+    });
+}
+
 function showProductPopup(product) {
+    const popup = document.getElementById("product-popup");
+    const popupContent = document.querySelector(".popup-content");
+    const popupImage = document.getElementById("popup-image");
+    const popupName = document.getElementById("popup-name");
+    const popupDescription = document.getElementById("popup-description");
+    const popupPrice = document.getElementById("popup-price");
+    const popupBuy = document.getElementById("popup-buy");
+    const popupAddToBag = document.getElementById("popup-add-to-bag");
+
+    // Populate popup with product details
     popupImage.src = product.image;
     popupName.textContent = product.name;
     popupDescription.textContent = product.description;
     popupPrice.textContent = `$${product.price.toFixed(2)}`;
-    
-    // Set Buy Now and Add to Bag button actions
+
+    // Set button actions
     popupBuy.onclick = () => alert(`Buying: ${product.name}`);
     popupAddToBag.onclick = () => addToBag(product.id, product.name, product.price, product.image);
-    
+
+    // Smoothly show the popup
     popup.style.display = "flex";
+    setTimeout(() => {
+        popup.style.opacity = "1";
+        popupContent.style.transform = "scale(1)";
+    }, 10);
 }
 
 // Hide popup when clicking close button
-closePopup.addEventListener("click", () => {
-    popup.style.display = "none";
-});
+// Close popup with smooth animation
+function closeProductPopup() {
+    const popup = document.getElementById("product-popup");
+    const popupContent = document.querySelector(".popup-content");
+
+    popup.style.opacity = "0";
+    popupContent.style.transform = "scale(0.9)";
+
+    setTimeout(() => {
+        popup.style.display = "none";
+    }, 300); // Matches transition duration
+}
+
+// Update close button event listener
+document.querySelector(".close-popup").addEventListener("click", closeProductPopup);
 
 // Close popup when clicking outside the content box
-popup.addEventListener("click", (event) => {
-    if (event.target === popup) {
-        popup.style.display = "none";
+document.getElementById("product-popup").addEventListener("click", (event) => {
+    if (event.target === document.getElementById("product-popup")) {
+        closeProductPopup();
     }
 });
+
 
 // Attach event listeners to product cards
 function attachProductPopupListeners() {
