@@ -149,6 +149,16 @@ function addToBag(productId, productName, productPrice, productImage) {
     } else {
         cart.push({ id: productId, name: productName, price: productPrice, image: productImage, quantity: 1 });
     }
+    // Show "Added to Bag" popup
+    const bagPopup = document.getElementById("added-to-bag-popup");
+    bagPopup.style.opacity = "1";
+    bagPopup.style.visibility = "visible";
+
+    // Hide after 2 seconds
+    setTimeout(() => {
+        bagPopup.style.opacity = "0";
+        bagPopup.style.visibility = "hidden";
+    }, 2000);
     updateBag();
 }
 
